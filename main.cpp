@@ -221,7 +221,7 @@ public:
         }
         cout << endl;
     }
-};
+}
 
 //added new method definition for every_other_element
 void every_other_element() {
@@ -238,4 +238,22 @@ void every_other_element() {
         
     }
     cout << endl; //print a new line at the end
-}
+} //realized i needed to demo this is main() so i moved the method call inside the main() function and included a basic demo
+ int main() {
+    DoublyLinkedList list; //creted new double linked list
+    //insert values into list for testing
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
+    list.push_back(4);
+    list.push_back(5);
+    list.push_back(6);
+    //demo the every other element method inside main()
+    cout << "Full list: ";
+    list.print();
+
+    cout << "Every other element: ";
+    list.every_other_element(); //outputs 1 3 5
+
+    return 0;
+ }
