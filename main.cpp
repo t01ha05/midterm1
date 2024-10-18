@@ -185,33 +185,36 @@ public:
             head = tail = nullptr; //if this was the only node, set head and tail to nullptr
         delete temp; //delete old tail
     }
-    //
+    //destructor to free up memory when list is destroyed
     ~DoublyLinkedList() {
-        while (head) {
+        while (head) { //continuously delete the head node until the list is empty
             Node* temp = head;
             head = head->next;
             delete temp;
         }
     }
+    //method to print all nodes in list from head to tail
     void print() {
-        Node* current = head;
-        if (!current) {
+        Node* current = head; //start from the head
+        if (!current) { //if the list is empty print a message and return
             cout << "List is empty." << endl;
             return;
         }
+        //traverse and print each nodes data
         while (current) {
             cout << current->data << " ";
             current = current->next;
         }
         cout << endl;
     }
-
+    //method to print all nodes in reverse from tail to head
     void print_reverse() {
-        Node* current = tail;
-        if (!current) { 
+        Node* current = tail; //start from tail
+        if (!current) { //if list is empty, print message and return
             cout << "List is empty." << endl;
             return;
         }
+        //traverse and print each nodes data
         while (current) {
             cout << current->data << " ";
             current = current->prev;
@@ -220,9 +223,6 @@ public:
     }
 };
 
-int main() {
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS;  // dummy statement to avoid compiler warning
-
-    
-    return 0;
+void every_other_element() {
+    Node* current = 
 }
