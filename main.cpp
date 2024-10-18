@@ -56,58 +56,61 @@ public:
         }
         //here we are inserting newNode after the node at the given postion
         newNode->next = temp->next; // set the next of newNode to the next of temp
-        newNode->prev = temp;
-        if (temp->next)
+        newNode->prev = temp; //set the prev of newNode to temp (the current position)
+        if (temp->next)                 //if there is a node after temp, update its prev pointer
             temp->next->prev = newNode;
-        else
+        else                            //if temp is the tail, update tail to newNode
             tail = newNode;
-        temp->next = newNode;
+        temp->next = newNode; //then finally you set temps next to newNode
     }
-
+    //a method to delete the first occurence of a node containing the given value
     void delete_val(int value) {
-        if (!head) return;
+        if (!head) return; //if the list is empty, there is nothing to delete
 
-        Node* temp = head;
+        Node* temp = head; //start traversing from the head
         
+        //traverse until we find the node with matching value
         while (temp && temp->data != value)
             temp = temp->next;
 
-        if (!temp) return; 
+        if (!temp) return; //what this does is that if no node with the value is found, return
 
+        //if node to delete has a previous node, adjust the next pointer
         if (temp->prev)
             temp->prev->next = temp->next;
         else
-            head = temp->next; 
-
+            head = temp->next; // if deleting the head, update head to the next node
+        //if node to delete has a next node, adjust the previous pointer
         if (temp->next)
             temp->next->prev = temp->prev;
         else
-            tail = temp->prev; 
+            tail = temp->prev; // if deleting the tail, update tail to previous node
 
-        delete temp;
+        delete temp; //finally delete the node
     }
-
+    //method to delete a node at a given position
     void delete_pos(int pos) {
-        if (!head) {
+        if (!head) { //what this does is if the list is empty, print a message and return
             cout << "List is empty." << endl;
             return;
         }
-    
-        if (pos == 1) {
+     
+        if (pos == 1) { //if the position is the head, simply pop the front node
             pop_front();
             return;
         }
     
         Node* temp = head;
-    
+        //traverses the list to what the desired position is
         for (int i = 1; i < pos; i++){
-            if (!temp) {
+            if (!temp) { //if position exceeds list size, print a message, in this case "position doesnt exist"
                 cout << "Position doesn't exist." << endl;
                 return;
             }
             else
                 temp = temp->next;
         }
+        //if
         if (!temp) {
             cout << "Position doesn't exist." << endl;
             return;
