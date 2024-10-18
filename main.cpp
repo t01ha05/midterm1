@@ -223,6 +223,19 @@ public:
     }
 };
 
+//added new method definition for every_other_element
 void every_other_element() {
-    Node* current = 
+    Node* current = head; //start from the head
+    bool printFlag = true; //this flag helps me determine if i should print the current nodes value
+
+    //travers list
+    while (current) {
+        if (printFlag) {
+            cout << current->data << " "; //prints current node vlaue
+        }
+        current = current->next; //move to next node
+        printFlag = !printFlag; //toggle the flag to skip or print the next node
+        
+    }
+    cout << endl; //print a new line at the end
 }
