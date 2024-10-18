@@ -11,6 +11,7 @@ private:
         int data; //value stored in node
         Node* prev; //pointer to previous node in the list
         Node* next; //pointer to the next node in the list
+       
         //node constructor initialized the nodes value and optionally sets its pointers and next nodes
         Node(int val, Node* p = nullptr, Node* n = nullptr) {
             data = val; 
@@ -100,9 +101,9 @@ public:
             return;
         }
     
-        Node* temp = head;
-        //traverses the list to what the desired position is
-        for (int i = 1; i < pos; i++){
+        Node* temp = head; //start traversing list
+       
+        for (int i = 1; i < pos; i++){ //traverses the list to what the desired position is
             if (!temp) { //if position exceeds list size, print a message, in this case "position doesnt exist"
                 cout << "Position doesn't exist." << endl;
                 return;
@@ -221,10 +222,9 @@ public:
         }
         cout << endl;
     }
-};
 
 //added new method definition for every_other_element
-void every_other_element() {
+    void every_other_element() {
     Node* current = head; //start from the head
     bool printFlag = true; //this flag helps me determine if i should print the current nodes value
 
@@ -238,7 +238,11 @@ void every_other_element() {
         
     }
     cout << endl; //print a new line at the end
-} //realized i needed to demo this is main() so i moved the method call inside the main() function and included a basic demo
+}
+};
+
+ //realized i needed to demo this is main() so i moved the method call inside the main() function and included a basic demo
+ 
  int main() {
     DoublyLinkedList list; //creted new double linked list
     //insert values into list for testing{edit: added more value for a more thorough test case}
@@ -258,4 +262,4 @@ void every_other_element() {
     list.every_other_element(); //outputs 10 30 50
 
     return 0;
- }  
+ }
